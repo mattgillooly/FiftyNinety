@@ -16,7 +16,7 @@ module Scrapers
 
         new(
           html_doc.at_css('div.ui360 a')['href'],
-          DateTime.parse(date_posted_el.text)
+          DateTime.strptime(date_posted_el.text, "%m/%d/%Y - %H:%M")
         )
       end
     end

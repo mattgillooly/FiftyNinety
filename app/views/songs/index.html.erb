@@ -1,0 +1,27 @@
+<h1>All songs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Remote ID</th>
+      <th>Title</th>
+      <th>User</th>
+      <th>Has demo</th>
+      <th>Demo href</th>
+      <th>Posted date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.remote_id %></td>
+        <td><%= link_to_remote_song(song.title, song.remote_id) %></td>
+        <td><%= link_to_remote_user(song.username, song.user_href) %></td>
+        <td><%= song.has_demo %></td>
+        <td><%= song.demo_href %></td>
+        <td><%= song.posted_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

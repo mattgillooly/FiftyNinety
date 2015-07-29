@@ -44,8 +44,8 @@ module Scrapers
 
       def next_page
         # Note: The last page has no "Next" link.
-        href = @html_doc.xpath('//li[contains(@class, "pager-next")]/a').first['href']
-        self.class.new(URI.join(@url, href)) if href
+        next_link = @html_doc.xpath('//li[contains(@class, "pager-next")]/a').first
+        self.class.new(URI.join(@url, next_link['href'])) if next_link
       end
     end
 

@@ -7,8 +7,8 @@ module Scrapers
     def self.songs_newer_than(threshold_id)
       iter = SongIterator.new
 
-      # This takes advantage of songs' auto-incrementing IDs.
-      iter.take_while { |song| song.id < threshold_id }
+      # This takes advantage of songs' auto-incrementing IDs and sort-order of the list
+      iter.take_while { |song| song.id > threshold_id }
     end
 
     class Song < Struct.new(:title, :href, :username, :user_href, :has_demo)

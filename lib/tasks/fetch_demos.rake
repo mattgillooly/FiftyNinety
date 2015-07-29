@@ -8,9 +8,9 @@ end
 
 task :fetch_new_demos => :environment do
   max_remote_id = Song.maximum(:remote_id)
-  new_songs = Scrapers::SonglistScraper.songs_newer_than(max_remote_id)
+  puts "fetching songs newer than #{max_remote_id}"
 
-  new_songs.each do |song|
+  Scrapers::SonglistScraper.songs_newer_than(max_remote_id).each do |song|
     scrape_song(song)
   end
 end
@@ -23,6 +23,9 @@ def scrape_song(song)
 
     demo = Scrapers::DemoScraper.scrape(song.id)
 
+    # TODO: Should fetch song titles from demo object, as full titles
+    # appear on song page, but are truncated in list view.
+    #
     ::Song.create!(
       remote_id: song.id,
       title: song.title,

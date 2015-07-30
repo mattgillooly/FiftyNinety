@@ -11,6 +11,12 @@ class SongsController < ApplicationController
           channel.title = 'NiftyFinety: All 50/90 Demos'
           channel.description = 'A podcast of all downloadable 50/90 demos, updated hourly.'
           channel.link = 'http://niftyfinety.com'
+
+          # Album art for iTunes
+          channel.image = RSS::Rss::Channel::Image.new
+          channel.image.url = 'http://niftyfinety.com/assets/podcast_logo.png'
+          channel.image.title = channel.title
+          channel.image.link = channel.link
         end
 
         render :xml => podcast.to_rss

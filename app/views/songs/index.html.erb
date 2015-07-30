@@ -16,8 +16,8 @@
     <% @songs.each do |song| %>
       <tr>
         <td><%= song.remote_id %></td>
-        <td><%= link_to_remote_song(song.title, song.remote_id) %></td>
-        <td><%= link_to_remote_user(song.username, song.user_href) %></td>
+        <td><%= link_to(song.title, song.remote_url) %></td>
+        <td><%= link_to(song.username, song.remote_user_url) %></td>
         <td><%= song.has_demo %></td>
         <td><%= song.demo_href %></td>
         <td><%= song.posted_date %></td>

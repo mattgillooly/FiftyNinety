@@ -34,8 +34,24 @@ def scrape_song(song)
       has_demo: song.has_demo,
       demo_href: demo.demo_href,
       posted_date: demo.posted_date,
+      liner_notes: demo.liner_notes,
+      lyrics: demo.lyrics,
     )
   else
     puts "song:#{song.id}: Has no scrapable demo."
+  end
+end
+
+
+task :backfill_song_liner_notes_and_lyrics => :environment do
+  Song.where(liner_notes: nil).find_each do |song|
+    puts "song:#{song.remote_id}: Backfilling liner_notes and lyrics"
+
+    demo = Scrapers::DemoScraper.scrape(song.remote_id)
+
+    song.update_attributes!(
+      liner_notes: demo.liner_notes,
+      lyrics: demo.lyrics,
+    )
   end
 end

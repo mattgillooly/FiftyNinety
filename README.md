@@ -1,4 +1,4 @@
-# FiftyNinety
+# NiftyFinety
 
 [50/90](http://fiftyninety.fawmers.org/) is a summer-long songwriting challenge.
 
@@ -8,7 +8,7 @@ I am not affiliated with the creators and/or organizers of 50/90, but I am a par
 
 This application provides some helpful utilities for enhancing your 50/90 experience.
 
-Check it out at: [https://fiftyninety.herokuapp.com/](https://fiftyninety.herokuapp.com/)
+Check it out at: [https://niftyfinety.herokuapp.com/](https://niftyfinety.herokuapp.com/)
 
 ## Coming Soon:
 

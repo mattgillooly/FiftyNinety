@@ -14,7 +14,10 @@ class SongsController < ApplicationController
 
           # Album art for iTunes
           channel.image = RSS::Rss::Channel::Image.new
-          channel.image.url = 'http://niftyfinety.com/assets/podcast_logo.png'
+          channel.image.url = URI.join(
+            'http://niftyfinety.com',
+            ActionController::Base.helpers.asset_url('podcast_logo.png')
+          )
           channel.image.title = channel.title
           channel.image.link = channel.link
         end

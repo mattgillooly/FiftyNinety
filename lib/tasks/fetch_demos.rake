@@ -44,7 +44,7 @@ end
 
 
 task :backfill_song_liner_notes_and_lyrics => :environment do
-  Song.where(liner_notes: nil).find_each do |song|
+  Song.find_each do |song|
     puts "song:#{song.remote_id}: Backfilling liner_notes and lyrics"
 
     demo = Scrapers::DemoScraper.scrape(song.remote_id)

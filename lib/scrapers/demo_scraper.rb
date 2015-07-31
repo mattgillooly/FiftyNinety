@@ -23,7 +23,7 @@ module Scrapers
       end
 
       def self.text_in_section(html_doc, section_title)
-        if section_header = html_doc.at_css("section h2[contains('Lyrics')]")
+        if section_header = html_doc.at_css("section h2[contains('#{section_title}')]")
           section_header.parent.css('p').map(&:text).join("\n\n")
         end
       end

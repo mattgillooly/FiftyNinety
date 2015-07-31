@@ -12,6 +12,11 @@ class SongsController < ApplicationController
           channel.description = 'A podcast of all downloadable 50/90 demos, updated hourly.'
           channel.link = 'http://niftyfinety.com'
 
+          # Author info for iTunes.  Otherwise, newest song's author is displayed.
+          channel.itunes_author = 'NiftyFinety'
+          channel.itunes_owner = RSS::ITunesChannelModel::ITunesOwner.new
+          channel.itunes_owner.itunes_name = 'NiftyFinety'
+
           # Album art for iTunes
           channel.image = RSS::Rss::Channel::Image.new
           channel.image.url = URI.join(

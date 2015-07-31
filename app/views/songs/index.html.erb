@@ -1,25 +1,21 @@
-<h1>All songs</h1>
+<h1>All Downloadable Demos</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Remote ID</th>
       <th>Title</th>
       <th>User</th>
-      <th>Has demo</th>
-      <th>Demo href</th>
-      <th>Posted date</th>
+      <th>Demo</th>
+      <th>Posted Date</th>
     </tr>
   </thead>
 
   <tbody>
     <% @songs.each do |song| %>
       <tr>
-        <td><%= song.remote_id %></td>
         <td><%= link_to(song.title, song.remote_url) %></td>
         <td><%= link_to(song.username, song.remote_user_url) %></td>
-        <td><%= song.has_demo %></td>
-        <td><%= song.demo_href %></td>
+        <td><%= link_to('Demo', song.demo_href) %></td>
         <td><%= song.posted_date %></td>
       </tr>
     <% end %>

@@ -8,7 +8,7 @@ class SongsController < ApplicationController
       format.html # index.html.erb
       format.xml do
         podcast = Podcast.new(@songs) do |channel|
-          channel.title = 'NiftyFinety: All 50/90 Demos'
+          channel.title = 'NiftyFinety.com: All 50/90 Demos'
           channel.description = 'A podcast of all downloadable 50/90 demos, updated hourly.'
           channel.link = 'http://niftyfinety.com'
 

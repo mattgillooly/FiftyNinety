@@ -47,3 +47,5 @@ gem 'puma'
 gem "rack-timeout"
 
 gem 'nokogiri'
+
+gem 'newrelic_rpm'

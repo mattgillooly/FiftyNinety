@@ -1,6 +1,6 @@
 # NiftyFinety
 
-[NiftyFinety](https://niftyfinety.herokuapp.com/) is a suite of utilities for enhancing your 50/90 experience.
+[NiftyFinety](https://niftyfinety.com/) is a suite of utilities for enhancing your 50/90 experience.
 
 [50/90](http://fiftyninety.fawmers.org/) is a summer-long songwriting challenge.
 
@@ -9,13 +9,11 @@
 I am not affiliated with the creators and/or organizers of 50/90, but I am a participant, and these utilities have come from my own wishlist.
 I hope they help you too!
 
-Check it out at: [https://niftyfinety.herokuapp.com/](https://niftyfinety.herokuapp.com/)
+Check it out at: [https://niftyfinety.com/](https://niftyfinety.com/)
 
-## Coming Soon:
+## Features (Some Coming Soon!):
 
-* Automatic podcasts
-  * for each user with downloadable demos.
-  * for each Challenge/Skirmish
-* Progress monitoring
-* Optional email updates so you never miss activity on the site
-* Tools for enhanced skirmishing
+- [x] Automatic podcast of all downloadable demos.
+- [ ] Progress monitoring
+- [ ] Tools for enhanced skirmishing
+- [ ] Optional email updates so you never miss activity on the site

@@ -2,6 +2,7 @@ class SongsController < ApplicationController
 
   # GET /songs
   def index
+    @current_page_title = 'Songs'
     @songs = Song.order('remote_id desc').all
 
     respond_to do |format|

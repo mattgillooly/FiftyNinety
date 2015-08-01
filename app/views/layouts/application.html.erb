@@ -1,14 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>NiftyFinety</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<%= yield %>
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="../assets/ico/favicon.png">
+</head>
+
+<body>
+  <div class="container-narrow">
+
+    <div class="masthead">
+      <ul class="nav nav-pills pull-right">
+        <%= nav_link_to 'Home', root_url %>
+        <%= nav_link_to 'Songs', songs_url %>
+      </ul>
+      <h3 class="muted">NiftyFinety</h3>
+    </div>
+
+    <hr>
+
+    <%= yield %>
+
+    <hr>
+
+    <div class="footer">
+      <p>
+        Website by <%= link_to 'Matt Gillooly', 'http://fiftyninety.fawmers.org/user/mattgillooly' %>.
+        All songs copyright their respective owners.
+      </p>
+    </div>
+
+  </div> <!-- /container -->
 
 </body>
 <script>
@@ -19,6 +58,5 @@
 
   ga('create', 'UA-65828634-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 </html>

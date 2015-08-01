@@ -1,12 +1,16 @@
 <h1>All Downloadable Demos</h1>
 
-<table>
+<p>
+This list is updated every hour.
+If something looks wrong, please let me know via <%= link_to 'my 50/90 contact form', 'http://fiftyninety.fawmers.org/user/mattgillooly' %>.</p>
+</p>
+
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
       <th>User</th>
       <th>Demo</th>
-      <th>Posted Date</th>
     </tr>
   </thead>
 
@@ -16,7 +20,6 @@
         <td><%= link_to(song.title, song.remote_url) %></td>
         <td><%= link_to(song.username, song.remote_user_url) %></td>
         <td><%= link_to('Demo', song.demo_href) %></td>
-        <td><%= song.posted_date %></td>
       </tr>
     <% end %>
   </tbody>

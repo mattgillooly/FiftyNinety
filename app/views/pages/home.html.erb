@@ -1,0 +1,48 @@
+<div class="jumbotron">
+  <h1>Enjoy 50/90 demos as a podcast</h1>
+  <p class="lead">A podcast (and more?) to enhance your 50/90 experience</p>
+  <a class="btn btn-large btn-success" href="itpc://feeds.feedburner.com/NiftyfinetycomAll50/90Demos">Subscribe in iTunes</a>
+  <a class="btn btn-large btn-default" href="pcast://feeds.feedburner.com/NiftyfinetycomAll50/90Demos">Subscribe in Podcast app</a>
+
+  <hr>
+
+  <p>
+    Feed URL: <%= link_to 'http://feeds.feedburner.com/NiftyfinetycomAll50/90Demos', 'http://feeds.feedburner.com/NiftyfinetycomAll50/90Demos' %>
+  </p>
+</div>
+
+<hr>
+
+<div class="row marketing">
+  <div class="col-md-6">
+    <h4>What is 50/90?</h4>
+    <p><%= link_to '50/90', 'http://fiftyninety.fawmers.org/' %> is a summer-long songwriting challenge.</p>
+    <blockquote> This is the marathon of songwriting known as the 50 Songs in 90 Days Challenge. Between July 4th and October 1st, participants attempt to write fifty songs. Songwriters will test their creative mettle by trying to create a finished song in less than 2 days every day for nearly 3 months.</blockquote>
+
+    <h4>Why does this podcast exist?</h4>
+    <p>I often listen to podcasts while driving, and I thought this would be a great way to keep caught-up on people's demos while I'm away from my computer.
+    So far, it's helped me listen to a lot more great songs, and I hope it helps you too!</p>
+
+    <h4>What's in the podcast?</h4>
+    <p>Ideally, every demo posted to <%= link_to 'http://fiftyninety.fawmers.org/', 'http://fiftyninety.fawmers.org/' %> with the "Downloadable" option selected should appear as an episode in the podcast.  Note that this does currently include any that are marked NSFW.</p>
+    <p>You can see the <%= link_to 'list of songs', songs_url %> to see what is currently in the podcast.</p>
+  </div>
+
+  <div class="col-md-6">
+    <h4>What if something is missing?</h4>
+    <ul>
+    <li>When you first subscribe the the podcast, your player may hide older demos, so first make sure the missing song isn't in that hidden backlog.</li>
+    <li>The podcast is only updated once per hour, so if you posted your demo recently, you may have to wait a bit for it to show up.</li>
+    <li>Also, note that it only looks at new songs, so if you add a demo to a pre-existing song, then it is unlikely to be added automatically.</li>
+    <li>Finally, make sure the demo is marked as Downloadable, and was added with a URL directly to the file, and not as a streaming link to Soundcloud, Youtube, etc.</li>
+    </ul>
+    <p>If you suspect a demo meets these criteria and is still missing, then you have probably found a bug and I would like to fix it!  Please let me know via <%= link_to 'my 50/90 contact form', 'http://fiftyninety.fawmers.org/user/mattgillooly' %>.</p>
+
+    <h4>What’s else?</h4>
+    <p>Please contact me via <%= link_to 'my 50/90 contact form', 'http://fiftyninety.fawmers.org/user/mattgillooly' %> if you have any questions / comments / suggestions / etc.</p>
+    <p>I'll be working on improvements to this during the remainder of 50/90.
+    You can <%= link_to 'sign up for the email newsletter', 'http://tinyletter.com/NiftyFinety' %> if you'd like to get infrequent updates about new features and bug fixes.</p>
+
+  </div>
+</div>
+

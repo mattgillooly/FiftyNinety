@@ -50,3 +50,7 @@ gem "rack-timeout"
 gem 'nokogiri'
 
 gem 'newrelic_rpm'
+
+gem 'treetop'
+
+gem 'rspec'

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :skirmishes
+
   resources :songs
 
   root 'pages#home'

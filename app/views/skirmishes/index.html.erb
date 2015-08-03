@@ -1,0 +1,19 @@
+<h1>Skirmishes</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Starts at</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @skirmishes.each do |skirmish| %>
+      <tr>
+        <td><%= skirmish.starts_at %></td>
+        <td><%= skirmish.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

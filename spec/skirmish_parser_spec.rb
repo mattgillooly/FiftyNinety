@@ -1,6 +1,6 @@
-require 'skirmish'
+require 'skirmish_parser'
 
-describe Skirmish::Parser do
+describe SkirmishParser::Parser do
   context "Sunday Skirmish 5, August 2nd , 3PM EST, 8PM pm in London; 12PM in LA;" do
     let(:title) {
       "Sunday Skirmish 5, August 2nd , 3PM EST, 8PM pm in London; 12PM in LA;"

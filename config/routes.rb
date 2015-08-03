@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :skirmishes
+  resources :skirmishes, only: [:index]
 
-  resources :songs
+  resources :songs, only: [:index]
 
   root 'pages#home'
 

@@ -1,0 +1,45 @@
+grammar SkirmishGrammar
+  rule title
+    ( weekday / date / time_with_zone / time / number / punctuation / word / space )* <SkirmishParser::Title>
+  end
+
+  rule word
+    [\S]+ <SkirmishParser::Word>
+  end
+
+  rule space
+    [\s]+ <SkirmishParser::Space>
+  end
+
+  rule punctuation
+    [;,] <SkirmishParser::Punctuation>
+  end
+
+  rule weekday
+    ('sunday' / 'monday' / 'tuesday' / 'wednesday' / 'thursday' / 'friday' / 'saturday') <SkirmishParser::Weekday>
+  end
+
+  rule month
+    ('january' / 'february' / 'march' / 'april' / 'may' / 'june' / 'july' / 'august' / 'september' / 'october' / 'november' / 'december') <SkirmishParser::Month>
+  end
+
+  rule timezone
+    ('est' / 'et' / 'gmt') <SkirmishParser::Timezone>
+  end
+
+  rule time
+    number (':' number)? space? ('am' / 'pm') <SkirmishParser::Time>
+  end
+
+  rule time_with_zone
+    time space timezone <SkirmishParser::TimeWithZone>
+  end
+
+  rule number
+    [0-9]+ <SkirmishParser::Number>
+  end
+
+  rule date
+    month space number ('st' / 'nd' / 'rd' / 'th')? <SkirmishParser::Date>
+  end
+end

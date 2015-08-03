@@ -54,3 +54,5 @@ gem 'newrelic_rpm'
 gem 'treetop'
 
 gem 'rspec'
+
+gem 'icalendar'

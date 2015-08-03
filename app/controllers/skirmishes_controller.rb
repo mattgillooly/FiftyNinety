@@ -1,74 +1,52 @@
 class SkirmishesController < ApplicationController
-  before_action :set_skirmish, only: [:show, :edit, :update, :destroy]
+
+  DEFAULT_ZONE = ActiveSupport::TimeZone["America/New_York"]
 
   # GET /skirmishes
-  # GET /skirmishes.json
+  # GET /skirmishes.ics
   def index
     @skirmishes = Skirmish.all
-  end
-
-  # GET /skirmishes/1
-  # GET /skirmishes/1.json
-  def show
-  end
-
-  # GET /skirmishes/new
-  def new
-    @skirmish = Skirmish.new
-  end
-
-  # GET /skirmishes/1/edit
-  def edit
-  end
-
-  # POST /skirmishes
-  # POST /skirmishes.json
-  def create
-    @skirmish = Skirmish.new(skirmish_params)
 
     respond_to do |format|
-      if @skirmish.save
-        format.html { redirect_to @skirmish, notice: 'Skirmish was successfully created.' }
-        format.json { render :show, status: :created, location: @skirmish }
-      else
-        format.html { render :new }
-        format.json { render json: @skirmish.errors, status: :unprocessable_entity }
+      format.html # index.html.erb
+      format.ics do
+        calendar = Icalendar::Calendar.new
+
+        @skirmishes.each do |skirmish|
+          next unless skirmish.starts_at
+          calendar.event do |e|
+            e.dtstart = skirmish.starts_at
+            e.dtend = skirmish.starts_at + 1.hour
+            e.summary = 'Skirmish'
+            e.description = skirmish.title
+            e.url = skirmish.remote_url
+          end
+        end
+
+        calendar.timezone do |c|
+          c.tzid = "America/New_York"
+
+          c.daylight do |d|
+            d.tzoffsetfrom =  "-0500"
+            d.tzoffsetto = "-0400"
+            d.tzname = "EDT"
+            d.dtstart = "19700308T020000"
+            d.rrule = "FREQ=YEARLY;BYMONTH=3;BYDAY=2SU"
+          end
+
+          c.standard do |s|
+            s.tzoffsetfrom = "-0400"
+            s.tzoffsetto = "-0500"
+            s.tzname = "EST"
+            s.dtstart = "19701101T020000"
+            s.rrule = "FREQ=YEARLY;BYMONTH=11;BYDAY=1SU"
+          end
+        end
+
+        calendar.publish
+
+        render :text => calendar.to_ical
       end
     end
   end
-
-  # PATCH/PUT /skirmishes/1
-  # PATCH/PUT /skirmishes/1.json
-  def update
-    respond_to do |format|
-      if @skirmish.update(skirmish_params)
-        format.html { redirect_to @skirmish, notice: 'Skirmish was successfully updated.' }
-        format.json { render :show, status: :ok, location: @skirmish }
-      else
-        format.html { render :edit }
-        format.json { render json: @skirmish.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /skirmishes/1
-  # DELETE /skirmishes/1.json
-  def destroy
-    @skirmish.destroy
-    respond_to do |format|
-      format.html { redirect_to skirmishes_url, notice: 'Skirmish was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_skirmish
-      @skirmish = Skirmish.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def skirmish_params
-      params.require(:skirmish).permit(:starts_at, :title)
-    end
 end

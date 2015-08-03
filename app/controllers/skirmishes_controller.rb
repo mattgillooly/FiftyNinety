@@ -17,8 +17,8 @@ class SkirmishesController < ApplicationController
           calendar.event do |e|
             e.dtstart = skirmish.starts_at
             e.dtend = skirmish.starts_at + 1.hour
-            e.summary = 'Skirmish'
-            e.description = skirmish.title
+            e.summary = '50/90 Skirmish'
+            e.description = skirmish.remote_url
             e.url = skirmish.remote_url
           end
         end

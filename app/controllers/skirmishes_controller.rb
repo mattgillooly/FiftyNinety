@@ -13,13 +13,15 @@ class SkirmishesController < ApplicationController
         calendar = Icalendar::Calendar.new
 
         @skirmishes.each do |skirmish|
-          next unless skirmish.starts_at
-          calendar.event do |e|
-            e.dtstart = skirmish.starts_at
-            e.dtend = skirmish.starts_at + 1.hour
-            e.summary = '50/90 Skirmish'
-            e.description = skirmish.remote_url
-            e.url = skirmish.remote_url
+          if skirmish.starts_at
+            url = 'http://fiftyninety.fawmers.org/' + skirmish.remote_url
+            calendar.event do |e|
+              e.dtstart = skirmish.starts_at
+              e.dtend = skirmish.starts_at + 1.hour
+              e.summary = '50/90 Skirmish'
+              e.description = url
+              e.url = url
+            end
           end
         end
 

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730213059) do
+ActiveRecord::Schema.define(version: 20150803222004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "skirmishes", force: true do |t|
+    t.datetime "starts_at"
+    t.string   "title",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "skirmishes", ["starts_at"], name: "index_skirmishes_on_starts_at", using: :btree
 
   create_table "songs", force: true do |t|
     t.integer  "remote_id",   null: false

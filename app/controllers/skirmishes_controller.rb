@@ -6,7 +6,7 @@ class SkirmishesController < ApplicationController
   # GET /skirmishes.ics
   def index
     @current_page_title = 'Skirmishes'
-    @skirmishes = Skirmish.all
+    @skirmishes = Skirmish.order('starts_at desc NULLS LAST').all
 
     respond_to do |format|
       format.html do

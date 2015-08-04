@@ -9,10 +9,12 @@ task :fetch_skirmishes => :environment do
 
   scraper.each do |topic|
     if s = ::Skirmish.find_by(remote_url: topic.remote_url)
-      s.update_attributes!(
-        title: topic.title,
-        starts_at: parser.parse(topic.title),
-      )
+      if s.title != topic.title
+        s.update_attributes!(
+          title: topic.title,
+          starts_at: parser.parse(topic.title),
+        )
+      end
     else
       Skirmish.create!(
         remote_url: topic.remote_url,

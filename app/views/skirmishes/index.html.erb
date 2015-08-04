@@ -1,5 +1,61 @@
 <h1>Skirmishes</h1>
 
+<p>
+This list is updated every hour.
+If something looks wrong, please let me know via <%= link_to 'my 50/90 contact form', 'http://fiftyninety.fawmers.org/user/mattgillooly' %>.</p>
+</p>
+
+<div style="margin-bottom: 40px;">
+  <p>
+    You can keep track of the skirmishes in your favorite calendar application.
+    Either copy-and-paste the URL:
+    <code><%= skirmishes_url(format: 'ics') %></code>
+    or click this button:
+  </p>
+
+
+  <%= link_to skirmishes_url(protocol: 'webcal', format: 'ics'), class: 'btn btn-default' do %>
+    <i class="glyphicon glyphicon-calendar"></i>
+    Subscribe to iCalendar Feed
+  <% end %>
+
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Sunday</th>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+      <th>Saturday</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @weeks.each do |week| %>
+      <tr>
+        <% week.each do |date| %>
+          <%= content_tag :td, style: (date[:skirmishes].empty? ? '' : "background-color: #eef;") do %>
+            <% if date[:during_5090] %>
+              <p class="initialism">
+                <%= date[:date].strftime('%b %e') %>
+              </p>
+              <% date[:skirmishes].each do |skirmish| %>
+                <br />
+                <%= link_to 'Skirmish', skirmish.url %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
 <table class="table">
   <thead>
     <tr>
@@ -12,7 +68,7 @@
     <% @skirmishes.each do |skirmish| %>
       <tr>
         <td><%= skirmish.starts_at %></td>
-        <td><%= skirmish.title %></td>
+        <td><%= link_to skirmish.title, skirmish.url %></td>
       </tr>
     <% end %>
   </tbody>

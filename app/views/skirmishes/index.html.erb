@@ -45,7 +45,7 @@ If something looks wrong, please let me know via <%= link_to 'my 50/90 contact f
               </p>
               <% date[:skirmishes].each do |skirmish| %>
                 <br />
-                <%= link_to 'Skirmish', skirmish.url %>
+                <%= skirmish_link skirmish %>
               <% end %>
             <% end %>
           <% end %>

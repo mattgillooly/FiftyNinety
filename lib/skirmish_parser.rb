@@ -75,7 +75,7 @@ module SkirmishParser
              when 'est', 'et', 'edt'
                ActiveSupport::TimeZone['Eastern Time (US & Canada)']
              when'gmt'
-               ActiveSupport::TimeZone['UTC']
+               ActiveSupport::TimeZone['London']
              else
                ActiveSupport::TimeZone[tz.text_value]
              end

@@ -1,4 +1,8 @@
 class SkirmishesController < ApplicationController
+  YEAR = 2016
+  START_DATE = Date.new(YEAR, 7, 4)
+  END_DATE = START_DATE + 89
+  DATES_FOR_CALENDAR = START_DATE.beginning_of_week(:sunday)..END_DATE.end_of_week(:sunday)
 
   # GET /skirmishes
   # GET /skirmishes.ics
@@ -11,12 +15,10 @@ class SkirmishesController < ApplicationController
         skirmishes_by_date = @skirmishes.select(&:starts_at).
           group_by{|s| s.starts_at.to_date}
 
-        dates = Date.new(2015, 6, 28)..Date.new(2015,10,3)
-
-        skirmish_dates = dates.map do |d|
+        skirmish_dates = DATES_FOR_CALENDAR.map do |d|
           {
             date: d,
-            during_5090: (Date.new(2015,7,4)..Date.new(2015,10,1)).include?(d),
+            during_5090: (Date.new(2016,7,4)..Date.new(2016,10,1)).include?(d),
             skirmishes: skirmishes_by_date[d] || [],
           }
         end

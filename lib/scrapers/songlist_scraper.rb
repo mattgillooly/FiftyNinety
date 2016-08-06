@@ -11,18 +11,20 @@ module Scrapers
       iter.take_while { |song| song.id > threshold_id }
     end
 
-    class Song < Struct.new(:title, :href, :username, :user_href, :has_demo)
+    class Song < Struct.new(:title, :href, :username, :user_href, :has_demo, :has_link)
       def self.build(el)
         song_link = el.at_css('td.views-field-title a')
         user_link = el.at_css('td.views-field-name a')
         demo_img = el.at_css('img[alt="Demo"]')
+        link_img = el.at_css('img[alt="link"]')
 
         new(
           song_link.text,
           song_link['href'],
           user_link.text,
           user_link['href'],
-          !!demo_img
+          !!demo_img,
+          !!link_img
         )
       end
 
